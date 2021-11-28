@@ -1,2 +1,2 @@
-# programacioniv
-Codigos de la catedra de Programacion IV - UGB2020 USU
+# APP-ACADEMICA -- Docker Compose
+Aplicación base para Orquestar con Docker Compose

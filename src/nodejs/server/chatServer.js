@@ -11,13 +11,13 @@ var http = require('http').Server(),
             privateKey:'QM1DCuNyxTIUSCtYbrT94WlbyREmfGVR0MVyj7_DUyQ'
         };
     var pushSubcriptions;//debe de almacenarse en una BD.
-    webpush.setVapidDetails("mailto:luishernandez@ugb.edu.sv",vapidKeys.publicKey, vapidKeys.privateKey);
+    webpush.setVapidDetails("mailto:usis049918@ugb.edu.sv",vapidKeys.publicKey, vapidKeys.privateKey);
 
 io.on('connection',socket=>{
     socket.on('enviarMensaje',(msg)=>{
         MongoClient.connect(url, (err,client)=>{
             const db = client.db(dbName);
-            db.collection('chat').insert({'user':'Luis', 'msg':msg});
+            db.collection('chat').insert({'user':'Victor', 'msg':msg});
             io.emit('recibirMensaje',msg);
             try {
                 const dataPush = JSON.stringify({
