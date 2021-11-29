@@ -2,7 +2,7 @@
 var http = require('http').Server(),
     io   = require('socket.io')(http),
     MongoClient = require('mongodb').MongoClient,
-    url  = 'mongodb://localhost:27017',
+    url  = 'mongodb://mongodb:27017',
     dbName = 'chatPrueba';
 
     const webpush = require('web-push'),
