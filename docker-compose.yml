@@ -8,6 +8,7 @@ services:
             - ./src/www:/var/www/html/
         links:
             - db
+            - chat
         networks:
             - default
     db:
@@ -26,6 +27,23 @@ services:
             - persistent:/var/lib/mysql
         networks:
             - default
+    chat:
+        build: ./src/nodejs
+        depends_on:
+            - mongodb
+        ports:
+            - "3001:3001"
+        volumes:
+            - ./src/nodejs/server:/opt/app
+            - /opt/app/node_modules
+        links:
+            - mongodb
+    mongodb:
+        image: mongo
+        expose:
+            - "27017"
+        volumes:
+            - mongodata:/data/db
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         links: 
@@ -38,3 +56,4 @@ services:
             MYSQL_ROOT_PASSWORD: academicaUGB2021
 volumes:
     persistent:
+    mongodata:
